@@ -23,11 +23,14 @@ public class ImageDrawer {
 	private static final HashSet<String> prevPaths = new HashSet<>();
 
 	public static void showPoints(Graphics2D g, ArrayList<FormPoint> points, FormScannerModel model) {
+		Stroke old = g.getStroke();
+		g.setStroke(new BasicStroke(model.getShapeSize() / 3f));
 		if(!points.isEmpty()) {
 			for(FormPoint point : points) {
 				showPoint(g, point, model/*, isTemp*/);
 			}
 		}
+		g.setStroke(old);
 	}
 
 //	public static void showPoints(Graphics2D g, ArrayList<FormPoint> points, FormScannerModel model, boolean isTemp) {
@@ -47,11 +50,11 @@ public class ImageDrawer {
 			int marker = model.getShapeSize();
 
 			if(model.getShapeType().equals(Constants.ShapeType.CIRCLE)) {
-				g.fillArc(x - marker, y - marker, 2 * marker,
+				g.drawArc(x - marker, y - marker, 2 * marker,
 				          2 * marker, 0, 360
 				);
 			} else {
-				g.fillRect(x - marker, y - marker, 2 * marker,
+				g.drawRect(x - marker, y - marker, 2 * marker,
 				           2 * marker
 				);
 			}

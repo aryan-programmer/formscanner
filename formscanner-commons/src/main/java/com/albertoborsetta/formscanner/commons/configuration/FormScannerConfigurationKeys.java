@@ -18,7 +18,7 @@ public class FormScannerConfigurationKeys {
 	public static final Integer DEFAULT_THRESHOLD = 127;
 
 	public static final String DENSITY = "density";
-	public static final Integer DEFAULT_DENSITY = 60;
+	public static final Integer DEFAULT_DENSITY = 50;
 
 	public static final String SHAPE_SIZE = "shape.size";
 	public static final Integer DEFAULT_SHAPE_SIZE = 10;
@@ -66,4 +66,13 @@ public class FormScannerConfigurationKeys {
 	public static final String BARCODE_NAME_TEMPLATE = "barcodeNameTemplate";
 	public static final String DEFAULT_BARCODE_NAME_TEMPLATE = FormScannerTranslation.getTranslationFor(FormScannerTranslationKeys.BARCODE) + "###";
 	public static final String HISTORY_BARCODE_NAME_TEMPLATE = "historyBarcodeNameTemplate";
+
+	public static final Integer DEFAULT_CROP_FROM_TOP = 120;
+	public static final Integer DEFAULT_CROP_FROM_LEFT = 50;
+	public static final Integer DEFAULT_CROP_FROM_RIGHT = 50;
+	public static final Integer DEFAULT_CROP_FROM_BOTTOM = 10;
+	public static final String CROP_FROM_TOP = "cropFromTop";
+	public static final String CROP_FROM_LEFT = "cropFromLeft";
+	public static final String CROP_FROM_RIGHT = "cropFromRight";
+	public static final String CROP_FROM_BOTTOM = "cropFromBottom";
 }

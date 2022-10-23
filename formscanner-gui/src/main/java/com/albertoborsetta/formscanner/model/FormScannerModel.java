@@ -248,12 +248,24 @@ public class FormScannerModel {
 		);
 		FormScannerFont.getFont(fontType, fontSize);
 
-		crop.put(FormScannerConstants.TOP, 0);
-		crop.put(FormScannerConstants.LEFT, 0);
-		crop.put(FormScannerConstants.RIGHT, 0);
-		crop.put(FormScannerConstants.BOTTOM, 0);
+		crop.put(FormScannerConstants.TOP, (Integer) configurations.getProperty(
+			FormScannerConfigurationKeys.CROP_FROM_TOP,
+			FormScannerConfigurationKeys.DEFAULT_CROP_FROM_TOP
+		));
+		crop.put(FormScannerConstants.LEFT, (Integer) configurations.getProperty(
+			FormScannerConfigurationKeys.CROP_FROM_LEFT,
+			FormScannerConfigurationKeys.DEFAULT_CROP_FROM_LEFT
+		));
+		crop.put(FormScannerConstants.RIGHT, (Integer) configurations.getProperty(
+			FormScannerConfigurationKeys.CROP_FROM_RIGHT,
+			FormScannerConfigurationKeys.DEFAULT_CROP_FROM_RIGHT
+		));
+		crop.put(FormScannerConstants.BOTTOM, (Integer) configurations.getProperty(
+			FormScannerConfigurationKeys.CROP_FROM_BOTTOM,
+			FormScannerConfigurationKeys.DEFAULT_CROP_FROM_BOTTOM
+		));
 
-		String tmpl = configurations.getProperty(FormScannerConfigurationKeys.TEMPLATE, (String) null);
+		String tmpl = configurations.getProperty(FormScannerConfigurationKeys.TEMPLATE, null);
 		if(!StringUtils.isEmpty(tmpl)) {
 			FormScannerResources.setTemplate(templatePath + tmpl);
 			openTemplate(FormScannerResources.getTemplate(), false);
@@ -988,6 +1000,13 @@ public class FormScannerModel {
 		configurations.setProperty(
 			FormScannerConfigurationKeys.HISTORY_BARCODE_NAME_TEMPLATE,
 			StringUtils.join(historyBarcodeNameTemplate, HISTORY_SEPARATOR)
+		);
+		configurations.setProperty(FormScannerConfigurationKeys.CROP_FROM_TOP, crop.get(FormScannerConstants.TOP));
+		configurations.setProperty(FormScannerConfigurationKeys.CROP_FROM_LEFT, crop.get(FormScannerConstants.LEFT));
+		configurations.setProperty(FormScannerConfigurationKeys.CROP_FROM_RIGHT, crop.get(FormScannerConstants.RIGHT));
+		configurations.setProperty(
+			FormScannerConfigurationKeys.CROP_FROM_BOTTOM,
+			crop.get(FormScannerConstants.BOTTOM)
 		);
 		configurations.store();
 
